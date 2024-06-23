@@ -20,6 +20,7 @@ module.exports = {
       {
         lightTheme: {
           "primary": "#3b82f6",
+          "primary-content": "#ffffff",
           "secondary": "#a3e635",
           "accent": "#f43f5e",
           "info": "#38bdf8",

@@ -22,3 +22,9 @@ const Hero = () => {
 };
 
 export default Hero;
+
+/*
+<div className='w-full h-[550px] bg-no-repeat bg-cover bg-center' style={{ backgroundImage: 'url(car-repair.jpg)' }} >
+    <div className="flex flex-col justify-center items-center w-full h-full shadow-lg dark:shadow-primary/5 bg-gradient-to-r from-slate-950/20 via-slate-950/70 to-slate-950/20 border-base-300 border">
+        <h1 className="text-5xl fo
+*/
