@@ -17,14 +17,14 @@ const Navbar = () => {
                 <Link href={'/'} className="py-2 px-4 rounded-md font-semibold text-xl bg-gradient-to-r from-blue-600 to-rose-600 border-none hover:from-blue-500 hover:to-rose-500 text-white">Car Doctors Pro</Link>
             </div>
             <div className="flex-none">
+                <ul className="menu menu-horizontal px-1">
+                    {navItems.map(item => <li><Link href={item.path}>{item.title}</Link></li>)}
+                </ul>
                 <div className='flex gap-2 items-center'>
                     <Link href={'/sign-in'}><button className='btn btn-sm btn-primary btn-outline rounded-sm'>Sign In</button></Link>
-                    <Link href={'/sign-up'}><button className='btn btn-sm btn-primary btn-outline rounded-sm'>Sign Up</button></Link>
+
                 </div>
                 {/* <>
-                    <ul className="menu menu-horizontal px-1">
-                        {navItems.map(item => <li><Link href={item.path}>{item.title}</Link></li>)}
-                    </ul>
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                             <div className="indicator">
@@ -66,3 +66,7 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
+{/* <Link href={'/sign-up'}><button className='btn btn-sm btn-primary btn-outline rounded-sm'>Sign Up</button></Link> */ }
