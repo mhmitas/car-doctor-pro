@@ -2,21 +2,38 @@
 
 import Container from "@/components/common/Container";
 import ProviderSignIn from "@/components/provider-signin/ProviderSignIn";
+import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+
 
 const SignUpPage = () => {
+    const router = useRouter()
     const [processing, setProcessing] = useState(false);
     const [errorMessage, setErrorMessage] = useState(null)
     const {
         register,
         handleSubmit,
+        reset
     } = useForm()
 
     const onSubmit = async (data) => {
-        console.log(data);
-        // setProcessing(true)
+        setProcessing(true)
+        try {
+            const res = await axios.post('/sign-up/api', data)
+            console.log(res?.data);
+            toast.success('Sign up success')
+            setProcessing(false)
+            reset()
+            router.push('/')
+        } catch (err) {
+            toast.error(err?.response?.data?.message || err?.message)
+            console.log(err);
+            setProcessing(false)
+        }
     }
 
     return (
@@ -33,7 +50,7 @@ const SignUpPage = () => {
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input {...register('name')} type="email" className="input input-bordered" required />
+                            <input {...register('name')} type="text" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -51,13 +68,13 @@ const SignUpPage = () => {
                             <label className="label">
                                 <span className="label-text">Select Your Role</span>
                             </label>
-                            <select {...register('role')} className="select select-bordered" defaultValue={'user'}>
+                            <select {...register('role')} className="select select-bordered" required defaultValue={'user'}>
                                 <option value="user">User</option>
                                 <option value="admin">Admin</option>
                             </select>
                         </div>
                         <div className="form-control pt-3">
-                            <button disabled={processing} className='btn btn-success'>
+                            <button disabled={processing} className='btn btn-primary'>
                                 <span className='text-lg font-semibold'>
                                     {processing ?
                                         <span className='loading loading-spinner text-primary'></span> :
@@ -67,7 +84,7 @@ const SignUpPage = () => {
                             </button>
                         </div>
                         <p className='pt-2'>Already have an account? Please <Link href={'/sign-in'} className='link link-primary'>Sign in</Link></p>
-                        <div className='divider py-6'>Or continue with</div>
+                        <div className='divider py-6'>Or</div>
                         <ProviderSignIn processing={processing} />
                     </form>
                 </div>

@@ -52,7 +52,7 @@ const SignInPage = () => {
                             </button>
                         </div>
                         <p className='pt-2'>Don't have an account? Please <Link href={'/sign-up'} className='link link-primary'>Sign up</Link></p>
-                        <div className='divider py-6'>Or continue with</div>
+                        <div className='divider py-6'>Or</div>
                         <ProviderSignIn processing={processing} />
                     </form>
                 </div>
