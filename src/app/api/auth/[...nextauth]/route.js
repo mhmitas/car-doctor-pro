@@ -5,7 +5,8 @@ import bcrypt from 'bcrypt';
 import GoogleProvider from "next-auth/providers/google";
 
 
-const handler = NextAuth({
+export const authOption = {
+    secret: '3079073facb015af4d20b6bc7400867641dd00aa22445c456691422cf352c55118483ec73e80f4898e8279603029a820b10309ca240ced3a927b85252128100c',
     session: {
         strategy: 'jwt',
         maxAge: 30 * 24 * 60 * 60,
@@ -70,6 +71,8 @@ const handler = NextAuth({
     pages: {
         signIn: '/sign-in'
     }
-})
+}
+
+const handler = NextAuth(authOption)
 
 export { handler as GET, handler as POST }
