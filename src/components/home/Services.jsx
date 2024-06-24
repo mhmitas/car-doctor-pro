@@ -14,7 +14,7 @@ const Services = async () => {
             <div>
                 <Heading heading="Our Services Area" topSubHeading={'Services'} bottomSubHeading={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus facere excepturi minima quidem quas. Architecto, autem. Eius atque modi aut!`} />
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
+            <div id='services' className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
                 {services?.map(service => <ServicesCard service={service} key={service._id} />)}
             </div>
         </Container>

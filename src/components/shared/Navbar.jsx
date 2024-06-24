@@ -75,7 +75,7 @@ function UserSection({ session }) {
                             <span className="badge">New</span>
                         </a>
                     </li>
-                    <li><a>Settings</a></li>
+                    <li><Link href={'/my-bookings'}>My Bookings</Link></li>
                     <li><button onClick={signOut}>Sign Out</button></li>
                 </ul>
             </div>

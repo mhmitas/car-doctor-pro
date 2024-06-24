@@ -40,6 +40,7 @@ const CheckoutPage = ({ params }) => {
             userName: session?.data?.user?.name,
             userEmail: session?.data?.user?.email,
             userImage: session?.data?.user?.image,
+            status: 'pending'
         }
         try {
             const res = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/checkout/api/new-booking`, checkoutData)
