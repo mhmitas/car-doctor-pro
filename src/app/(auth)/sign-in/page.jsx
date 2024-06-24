@@ -4,10 +4,14 @@ import ProviderSignIn from '@/components/provider-signin/ProviderSignIn';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
+import { signIn } from 'next-auth/react'
+import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
 
 const SignInPage = () => {
+    const router = useRouter()
     const [processing, setProcessing] = useState(false);
-    const [errorMessage, setErrorMessage] = useState(null)
+    // const [errorMessage, setErrorMessage] = useState(null)
     const {
         register,
         handleSubmit,
@@ -15,8 +19,24 @@ const SignInPage = () => {
     } = useForm()
 
     const onSubmit = async (data) => {
-        console.log(data);
         setProcessing(true)
+        // console.log(data);
+        try {
+            const res = await signIn('credentials', { ...data, redirect: false })
+            console.log(res);
+            if (res.status == 200) {
+                setProcessing(false)
+                toast.success('Sign in success')
+                router.push('/')
+            }
+            else if (res?.status >= 400) {
+                toast.error('Invalid Credential ' + res?.error)
+                setProcessing(false)
+            }
+        } catch (err) {
+            console.error(err);
+            setProcessing(false)
+        }
     }
 
     return (
@@ -53,7 +73,7 @@ const SignInPage = () => {
                         </div>
                         <p className='pt-2'>Don't have an account? Please <Link href={'/sign-up'} className='link link-primary'>Sign up</Link></p>
                         <div className='divider py-6'>Or</div>
-                        <ProviderSignIn processing={processing} />
+                        <ProviderSignIn processing={processing} setProcessing={setProcessing} />
                     </form>
                 </div>
             </div>
