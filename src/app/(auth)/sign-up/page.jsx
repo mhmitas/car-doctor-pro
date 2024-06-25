@@ -85,7 +85,7 @@ const SignUpPage = () => {
                         </div>
                         <p className='pt-2'>Already have an account? Please <Link href={'/sign-in'} className='link link-primary'>Sign in</Link></p>
                         <div className='divider py-6'>Or</div>
-                        <ProviderSignIn processing={processing} />
+                        <ProviderSignIn processing={processing} setProcessing={setProcessing} />
                     </form>
                 </div>
             </div>
