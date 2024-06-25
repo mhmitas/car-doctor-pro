@@ -7,7 +7,7 @@ import { getServices } from '@/services/getServices';
 const Services = async () => {
 
     const services = await getServices()
-    // console.log(services);
+    console.log({ services });
 
     return (
         <Container>

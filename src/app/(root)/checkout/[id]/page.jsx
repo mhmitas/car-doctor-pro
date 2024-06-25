@@ -18,7 +18,7 @@ const CheckoutPage = ({ params }) => {
 
     useEffect(() => {
         loadService()
-    }, [])
+    })
     const loadService = async () => {
         setIsLoading(true)
         try {

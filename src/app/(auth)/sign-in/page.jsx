@@ -1,4 +1,5 @@
 'use client'
+/* eslint-disable react/no-unescaped-entities */
 import Container from '@/components/common/Container';
 import ProviderSignIn from '@/components/provider-signin/ProviderSignIn';
 import Link from 'next/link';
@@ -71,7 +72,7 @@ const SignInPage = () => {
                                 </span>
                             </button>
                         </div>
-                        <p className='pt-2'>Don't have an account? Please <Link href={'/sign-up'} className='link link-primary'>Sign up</Link></p>
+                        <p className='pt-2'>Dont have an account? Please <Link href='/sign-up' className='link link-primary'>Sign up</Link></p>
                         <div className='divider py-6'>Or</div>
                         <ProviderSignIn processing={processing} setProcessing={setProcessing} />
                     </form>

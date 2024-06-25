@@ -1,4 +1,5 @@
 import connectDB from "@/lib/connectDB";
+import { NextResponse } from "next/server";
 
 export async function GET(request, { params }) {
     try {
@@ -7,14 +8,14 @@ export async function GET(request, { params }) {
         const email = params?.email;
         console.log({ email })
         if (!email) {
-            return Response.json({ message: 'email not found' }, { status: 402 })
+            return NextResponse.json({ message: 'email not found' }, { status: 402 })
         }
         // get service
         const result = await bookingColl.find({ userEmail: email }).toArray()
         // console.log({result})
-        return Response.json(result)
+        return NextResponse.json(result)
     } catch (err) {
         console.error('Services not found:', err);
-        return Response.json({ message: err?.message }, { status: 404 })
+        return NextResponse.json({ message: err?.message }, { status: 404 })
     }
 }

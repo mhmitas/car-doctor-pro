@@ -1,4 +1,5 @@
 import connectDB from "@/lib/connectDB"
+import { NextResponse } from "next/server";
 
 export async function DELETE(req, { params }) {
     try {
@@ -6,9 +7,9 @@ export async function DELETE(req, { params }) {
         const coll = db.collection('bookings');
         const email = params.email;
         const result = await coll.deleteMany({ userEmail: email });
-        return Response.json(result);
+        return NextResponse.json(result);
     } catch (err) {
         console.error(err);
-        return Response.json({ message: 'Service Not Deleted:', err })
+        return NextResponse.json({ message: 'Service Not Deleted:', err })
     }
 }
