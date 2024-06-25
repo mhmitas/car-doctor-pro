@@ -9,7 +9,7 @@ export async function GET() {
         console.log({ result })
         return NextResponse.json(result)
     } catch (err) {
-        console.error('Services not found(get-all/route.js):', err);
+        // console.error('Services not found(get-all/route.js):', err);
         return NextResponse.json([])
     }
 }
