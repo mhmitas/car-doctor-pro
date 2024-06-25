@@ -7,12 +7,15 @@ export async function GET(request, { params }) {
         const db = await connectDB()
         const serviceColl = db.collection('services')
         const id = new ObjectId(params?._id)
+        if (!id) {
+            return NextResponse.json({})
+        }
         // get service
         const result = await serviceColl.findOne({ _id: id })
         // console.log({result})
         return NextResponse.json(result)
     } catch (err) {
-        console.error('Services not found:', err);
+        console.error('Service not found():', err);
         return NextResponse.json({ message: err?.message }, { status: 404 })
     }
 }

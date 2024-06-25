@@ -3,7 +3,7 @@ import axios from "axios";
 export async function getServices() {
     try {
         const res = await axios(`http://localhost:3000/services/api/get-all`)
-        console.log('getServices:', { services: res.data })
+        // console.log('getServices:', { services: res.data })
         return res.data
     } catch (err) {
         console.error(err);

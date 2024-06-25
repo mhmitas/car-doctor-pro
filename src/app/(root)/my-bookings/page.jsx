@@ -15,7 +15,7 @@ const MyBookingsPage = () => {
     const [bookings, setBookings] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const session = useSession()
-    console.log(session?.data?.user?.email);
+
 
     async function loadData() {
         if (!session?.data?.user?.email) {
@@ -30,6 +30,7 @@ const MyBookingsPage = () => {
 
     useEffect(() => {
         async function loadData() {
+            console.log(session?.data?.user?.email);
             if (!session?.data?.user?.email) {
                 return
             }
@@ -58,6 +59,7 @@ const MyBookingsPage = () => {
             console.error(err);
         }
     }
+
     async function handleClearCart() {
         const ask = confirm('Do you want to clear all bookings')
         if (!ask) { return }

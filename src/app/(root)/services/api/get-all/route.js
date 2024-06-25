@@ -9,6 +9,6 @@ export async function GET() {
         // console.log(result)
         return NextResponse.json(result)
     } catch (err) {
-        console.error('Services not found:', err);
+        console.error('Services not found(get all):', err);
     }
 }
