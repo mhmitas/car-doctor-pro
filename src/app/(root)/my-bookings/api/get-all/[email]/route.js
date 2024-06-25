@@ -6,8 +6,8 @@ export async function GET(request, { params }) {
         const db = await connectDB()
         const bookingColl = db.collection('bookings')
         const email = params?.email;
-        console.log({ email })
-        if (!email) {
+        // console.log({ email })
+        if (!email || email === 'undefined') {
             return NextResponse.json({ message: 'email not found' }, { status: 402 })
         }
         // get service
@@ -16,6 +16,6 @@ export async function GET(request, { params }) {
         return NextResponse.json(result)
     } catch (err) {
         console.error('Services not found:', err);
-        return NextResponse.json({ message: err?.message }, { status: 404 })
+        return NextResponse.json([])
     }
 }
