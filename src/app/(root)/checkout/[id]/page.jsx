@@ -17,19 +17,19 @@ const CheckoutPage = ({ params }) => {
     // console.log({ session });
 
     useEffect(() => {
-        loadService()
-    })
-    const loadService = async () => {
-        setIsLoading(true)
-        try {
-            const service = await getServiceDetails(params.id)
-            setService(service)
-            setIsLoading(false)
-        } catch (err) {
-            console.log(err);
-            setIsLoading(false)
+        const loadService = async () => {
+            setIsLoading(true)
+            try {
+                const service = await getServiceDetails(params.id)
+                setService(service)
+                setIsLoading(false)
+            } catch (err) {
+                console.log(err);
+                setIsLoading(false)
+            }
         }
-    }
+        loadService()
+    }, [params.id])
 
     async function onSubmit(data) {
         const checkoutData = {

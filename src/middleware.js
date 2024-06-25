@@ -5,9 +5,9 @@ export const middleware = async (request) => {
     const token = cookies(request).get('__Secure-next-auth.session-token')
     const pathname = request.nextUrl.pathname
 
-    if (!token) {
-        return NextResponse.redirect(new URL('/sign-in', request.url))
-    }
+    // if (!token) {
+    //     return NextResponse.redirect(new URL('/sign-in', request.url))
+    // }
     return NextResponse.next()
 };
 

@@ -29,8 +29,19 @@ const MyBookingsPage = () => {
     }
 
     useEffect(() => {
+        async function loadData() {
+            if (!session?.data?.user?.email) {
+                return
+            }
+            setIsLoading(true)
+            const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/my-bookings/api/get-all/${session?.data?.user?.email}`)
+            console.log(res.data);
+            setBookings(res.data)
+            setIsLoading(false)
+        }
+
         loadData()
-    }, [session?.status])
+    }, [session?.status, session?.data?.user?.email])
 
     async function handleDelete(id) {
         const ask = confirm('Do you want to remove this service form your cart')

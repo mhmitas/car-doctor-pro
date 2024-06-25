@@ -14,7 +14,7 @@ const ProviderSignIn = ({ processing, setProcessing }) => {
             toast.success('Sign in successfully')
             router.push('/')
         }
-    }, [session?.status])
+    }, [session?.status, router])
 
     async function handleSignIn(provider) {
         setProcessing(true)
